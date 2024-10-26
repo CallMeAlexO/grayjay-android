@@ -51,7 +51,6 @@
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|uiMode"
             android:exported="true"
-            android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.FutoVideo.NoActionBar"
             android:launchMode="singleTask"
             android:resizeableActivity="true"
@@ -73,12 +72,21 @@
 
                 <data android:scheme="fcast" />
             </intent-filter>
+
+            <!-- Intent filter for mobile and tablets (standard Android devices) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
+            <!-- Intent filter for Android TV -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
             <intent-filter android:autoVerify="true">
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -224,10 +232,6 @@
             android:theme="@style/Theme.FutoVideo.NoActionBar" />
         <activity
             android:name=".activities.FCastGuideActivity"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/Theme.FutoVideo.NoActionBar" />
-        <activity
-            android:name=".activities.PolycentricWhyActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.FutoVideo.NoActionBar" />
         <activity

@@ -221,6 +221,10 @@ dependencies {
     //Payment
     implementation 'com.stripe:stripe-android:20.35.1'
 
+    // TV
+    implementation "androidx.leanback:leanback-paging:1.1.0-alpha11"
+    implementation "androidx.leanback:leanback-tab:1.1.0-beta01"
+
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3'
     testImplementation "org.jetbrains.kotlin:kotlin-test:1.8.22"
