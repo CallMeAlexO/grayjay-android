@@ -7,6 +7,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.futo.platformplayer.Settings
 import com.futo.platformplayer.UIDialogs
 import com.futo.platformplayer.activities.MainActivity
 import com.futo.platformplayer.activities.SettingsActivity
+import com.futo.platformplayer.animations.ElementSelectionAnimation
 import com.futo.platformplayer.dp
 import com.futo.platformplayer.fragment.mainactivity.MainActivityFragment
 import com.futo.platformplayer.fragment.mainactivity.main.*
@@ -189,6 +191,10 @@ class MenuBottomBarFragment : MainActivityFragment() {
                     setMoreVisible(false);
                 }
 
+                menuButton.setOnFocusChangeListener { v, hasFocus ->
+                    menuButton.updateSelection(hasFocus)
+                }
+
                 _layoutBottomBarButtons.addView(menuButton)
                 if (index < buttonDefinitions.size - 1) {
                     _layoutBottomBarButtons.addView(Space(context).apply {
@@ -330,7 +336,8 @@ class MenuBottomBarFragment : MainActivityFragment() {
 
             constructor(context: Context, def: ButtonDefinition, fragment: MenuBottomBarFragment, isMore: Boolean): super(context) {
                 inflate(context, if(isMore) R.layout.view_bottom_more_menu_button else R.layout.view_bottom_menu_button, this);
-                layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+                setBackgroundColor(Color.WHITE)
+                background.alpha = 0;
 
                 this.definition = def;
 
@@ -348,6 +355,15 @@ class MenuBottomBarFragment : MainActivityFragment() {
 
             fun updateActive(fragment: MenuBottomBarFragment) {
                 _buttonImage.setImageResource(if (definition.isActive(fragment)) definition.iconActive else definition.icon);
+            }
+
+            fun updateSelection(hasFocus: Boolean) {
+                ElementSelectionAnimation(this).animateAlpha(hasFocus)
+                if (hasFocus) {
+                    _buttonImage.setImageResource(definition.iconActive);
+                } else {
+                    _buttonImage.setImageResource(definition.icon);
+                }
             }
         }
     }
