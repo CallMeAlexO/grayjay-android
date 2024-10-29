@@ -11,7 +11,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_bottom_bar"
-        android:layout_width="128dp"
+        android:layout_width="256dp"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginHorizontal="4dp"

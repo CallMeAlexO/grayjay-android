@@ -1,0 +1,16 @@
+<!-- res/color/text_color_button_states.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- State when the button is pressed -->
+    <item android:state_pressed="true" android:color="#000000"/> <!-- Red when pressed -->
+
+    <!-- State when the button is focused -->
+    <item android:state_focused="true" android:color="#000000"/> <!-- Blue when focused -->
+
+    <!-- State when the button is disabled -->
+    <item android:state_enabled="false" android:color="#B0BEC5"/> <!-- Grey when disabled -->
+
+    <!-- Default state -->
+    <item android:color="#FFFFFF"/> <!-- Black in default state -->
+
+</selector>
