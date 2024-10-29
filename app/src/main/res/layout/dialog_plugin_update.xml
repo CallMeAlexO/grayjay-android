@@ -118,35 +118,35 @@
                     android:layout_weight="1" />
 
                 <Button
+                    style="@style/Theme.FutoVideo.Button"
                     android:id="@+id/button_cancel_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cancel"
                     android:textSize="14dp"
                     android:fontFamily="@font/inter_regular"
-                    android:textColor="@color/colorPrimary"
-                    android:background="@color/transparent" />
+                    android:textColor="@color/focusable_button_transparent_text"
+                    android:background="@drawable/background_focusable_button_transparent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginVertical="16dp"
+                    >
+                </Button>
 
-                <LinearLayout
+                <Button
+                    style="@style/Theme.FutoVideo.Button"
                     android:id="@+id/button_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_primary"
+                    android:text="@string/update"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/design_default_color_on_primary"
+                    android:background="@drawable/background_focusable_button_colored"
                     android:layout_marginEnd="28dp"
-                    android:clickable="true">
+                    android:layout_marginVertical="16dp"
+                    >
+                </Button>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Update"
-                        android:textSize="14dp"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/inter_regular"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingStart="28dp"
-                        android:paddingEnd="28dp"/>
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

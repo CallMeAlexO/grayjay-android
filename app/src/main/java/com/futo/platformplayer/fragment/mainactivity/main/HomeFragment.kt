@@ -17,6 +17,7 @@ import com.futo.platformplayer.constructs.TaskHandler
 import com.futo.platformplayer.engine.exceptions.ScriptCaptchaRequiredException
 import com.futo.platformplayer.engine.exceptions.ScriptExecutionException
 import com.futo.platformplayer.engine.exceptions.ScriptImplementationException
+import com.futo.platformplayer.helpers.TVHelper
 import com.futo.platformplayer.logging.Logger
 import com.futo.platformplayer.models.SearchType
 import com.futo.platformplayer.states.AnnouncementType
@@ -108,7 +109,12 @@ class HomeFragment : MainFragment() {
 
         constructor(fragment: HomeFragment, inflater: LayoutInflater, cachedRecyclerData: RecyclerData<InsertedViewAdapterWithLoader<ContentPreviewViewHolder>, LinearLayoutManager, IPager<IPlatformContent>, IPlatformContent, IPlatformContent, InsertedViewHolder<ContentPreviewViewHolder>>? = null) : super(fragment, inflater, cachedRecyclerData) {
             _announcementsView = AnnouncementView(context, null).apply {
-                headerView.addView(this);
+
+                // No announcements in TV mode.
+                if (!TVHelper.isRunningOnTV(context)) {
+                    headerView.addView(this);
+                }
+
             };
 
             _taskGetPager = TaskHandler<Boolean, IPager<IPlatformContent>>({ fragment.lifecycleScope }, {

@@ -38,7 +38,7 @@ class AutoUpdateDialog(context: Context?) : AlertDialog(context) {
 
     private lateinit var _buttonNever: Button;
     private lateinit var _buttonClose: Button;
-    private lateinit var _buttonUpdate: LinearLayout;
+    private lateinit var _buttonUpdate: Button;
     private lateinit var _text: TextView;
     private lateinit var _textProgress: TextView;
     private lateinit var _updateSpinner: ImageView;

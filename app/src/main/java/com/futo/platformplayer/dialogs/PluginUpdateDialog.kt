@@ -30,6 +30,7 @@ import com.futo.platformplayer.api.media.exceptions.NoPlatformClientException
 import com.futo.platformplayer.api.media.platforms.js.SourcePluginConfig
 import com.futo.platformplayer.api.media.platforms.js.SourcePluginDescriptor
 import com.futo.platformplayer.assume
+import com.futo.platformplayer.helpers.TVHelper
 import com.futo.platformplayer.logging.Logger
 import com.futo.platformplayer.models.ImportCache
 import com.futo.platformplayer.states.StateApp
@@ -48,7 +49,7 @@ class PluginUpdateDialog : AlertDialog {
 
     private lateinit var _buttonCancel1: Button;
     private lateinit var _buttonCancel2: Button;
-    private lateinit var _buttonUpdate: LinearLayout;
+    private lateinit var _buttonUpdate: Button;
 
     private lateinit var _buttonOk: LinearLayout;
     private lateinit var _buttonInstall: LinearLayout;
@@ -113,15 +114,25 @@ class PluginUpdateDialog : AlertDialog {
         _buttonCancel1.setOnClickListener {
             dismiss();
         };
+        _buttonCancel1.setOnFocusChangeListener { v, hasFocus ->
+            TVHelper.animateFocus(v, hasFocus)
+        }
+
         _buttonCancel2.setOnClickListener {
+            TVHelper.animateFocus(_buttonCancel2, false)
             dismiss();
         };
         _buttonUpdate.setOnClickListener {
             if (_isUpdating)
                 return@setOnClickListener;
             _isUpdating = true;
+            TVHelper.animateFocus(_buttonUpdate, false)
             update();
         };
+        _buttonUpdate.setOnFocusChangeListener { v, hasFocus ->
+            TVHelper.animateFocus(v, hasFocus)
+        }
+
 
         Glide.with(_iconPlugin)
             .load(_oldConfig.absoluteIconUrl)
